@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+
+  
+  <!--CATCH  MANY-->
+  <category>
+      <pattern>*</pattern>
+      <template>
+          If you want to start at the beginning, type 'hi'<split />
+          Or, were you leaving feedback?
+      <button>
+          <text>No, start at the beginning.</text>
+          <postback>hi</postback>
+      </button>
+      <button>
+          <text>Yes, I just wrote some feedback.</text>
+          <postback>yes</postback>
+      </button>      
+      </template>
+  </category>
+  
+  <!-- INTRO -->
+  <category>
+      <pattern><set>greetings</set></pattern>
+      <template>Hello! Are you ready to get started?
+      <button>
+          <text>Yes, let's find the right career for me.</text>
+          <postback>questions</postback>
+      </button>
+      <button>
+          <text>Yes, what can you tell me about my career options?</text>
+          <postback>careers</postback>
+      </button>
+      <button>
+          <text>No, I think I should speak to my advisor.</text>
+          <postback>
+              contact
+          </postback>
+      </button>
+      </template>
+  </category>
+  
+  
+  <!-- QUESTIONS TO CHOOSE CAREER -->
+  <category>
+      <pattern>questions</pattern>
+      <template>Do you prefer working with hardware or software or databases?
+      <button>
+          <text>Hardware</text>
+          <postback>hardware</postback>
+      </button>
+      <button>
+          <text>Software</text>
+          <postback>software</postback>
+      </button>
+      <button>
+          <text>Databases</text>
+          <postback>database</postback>
+      </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>hardware</pattern>
+      <template>Do you prefer designing hardware or repair?
+      <button>
+          <text>Design</text>
+          <postback>compengine</postback>
+      </button>
+      <button>
+          <text>Repair</text>
+          <postback>techsupport</postback>
+      </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>software</pattern>
+      <template>Do you prefer working on applications or web sites?
+      <button>
+          <text>Applications</text>
+          <postback>softdev</postback>
+      </button>
+      <button>
+          <text>Web Sites</text>
+          <postback>webdev</postback>
+      </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>database</pattern>
+      <template>Do you prefer to design and manage databases or analyze the data 
+      stored in databases?
+      <button>
+          <text>Design and Manage</text>
+          <postback>dba</postback>
+      </button>
+      <button>
+          <text>Analyze</text>
+          <postback>data</postback>
+      </button>
+      </template>
+  </category>
+  
+
+  
+  
+  <!-- MENU FOR CAREERS -->
+  <category>
+      <pattern>careers</pattern>
+      <template>Which career would you like to learn more about?
+      <button>
+          <text>Software Developer</text>
+          <postback>softdev</postback>
+      </button>
+      <button>
+          <text>Web Developer</text>
+          <postback>webdev</postback>
+      </button>
+      <button>
+          <text>Computer Engineer</text>
+          <postback>compengine</postback>
+      </button>
+      <button>
+          <text>Technical Support</text>
+          <postback>techsupport</postback>
+      </button>
+      <button>
+          <text>Data Scientist</text>
+          <postback>data</postback>
+      </button>
+      <button>
+          <text>Database Administration</text>
+          <postback>dba</postback>
+      </button>
+      <button>
+          <text>Answer questions to see which career is right for you.</text>
+          <postback>questions</postback>
+      </button>
+      </template>
+  </category>
+  
+  
+  
+  <!-- INFO ON SIX CAREERS -->
+  <category>
+      <pattern><set>careers</set></pattern>
+      <template>
+          <think><set name = "career"><star /></set></think>
+          
+          <condition name = "career" value = "dba">Database administrators use 
+          specialized software to store and organize data, such as financial 
+          information and customer shipping records. <split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/computer-and-information-technology/database-administrators.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          <condition name = "career" value = "data">Operations research analysts 
+          use advanced mathematical and analytical methods to help organizations 
+          solve problems and make better decisions.<split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/math/operations-research-analysts.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          <condition name = "career" value = "techsupport">Computer support 
+          specialists provide help and advice to computer users and 
+          organizations. These specialists either support computer networks or 
+          they provide technical assistance directly to computer users.<split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          <condition name = "career" value = "compengine">Computer 
+                    hardware engineers research, design, develop, and test 
+                    computer systems and components such as processors, circuit 
+                    boards, memory devices, networks, and routers.<split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/architecture-and-engineering/computer-hardware-engineers.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          <condition name = "career" value = "softdev">Software developers 
+          create the computer applications that allow users to do specific tasks 
+          and the underlying systems that run the devices or control networks. 
+          <split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          <condition name = "career" value = "webdev">Web developers create and 
+          maintain websites. They are also responsible for the site’s technical 
+          aspects, such as its performance and capacity, which are measures of a 
+          website’s speed and how much traffic the site can handle. In addition,
+          web developers may create content for the site. Digital designers 
+          develop, create, and test website or interface layout, functions, and 
+          navigation for usability. They are responsible for the look and 
+          functionality of the website or interface.<split />
+          <link>
+              <text>Read more...</text>
+              <url>https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm#tab-2</url>
+          </link>
+          </condition>
+          
+          
+          <button>
+              <text>Learn about a different career.</text>
+              <postback>careers</postback>
+          </button>
+          <button>
+              <text>Answer some questions to see which career is the best fit 
+              for you.</text>
+              <postback>questions</postback>
+          </button>
+      </template>
+ 
+  </category>
+  
+  
+  
+  <!-- CONTACT -->
+  <category>
+      <pattern>contact</pattern>
+      
+      <template>
+          Of course you can talk to your academic advisor. Before you go, if 
+          this bot did not meet your needs, could you leave a comment about your 
+          problem with the bot and maybe a suggestion on how to improve it?
+      </template>
+  </category>
+  
+    <category>
+      <pattern>yes</pattern>
+      <template>
+          Do you want to start over and learn about computer science careers?
+          <button>
+              <text>Yes</text>
+              <postback>hi</postback>
+          </button>
+          <button>
+              <text>No</text>
+              <postback>fine</postback>
+          </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>fine</pattern>
+      <template>
+          Ok, thank you for the feedback! Here's how you can contact your advisor:
+          <link>
+              <text>(787) 555-1234</text>
+              <url>tel:7875551234</url>
+          </link>
+          <link>
+              <text>advisor@university.edu</text>
+              <url>mailto:advisor@university.edu</url>
+          </link>
+          Good luck!
+      </template>
+  </category>
+  
+
+  
+</aiml>
